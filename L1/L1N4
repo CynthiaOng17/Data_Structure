@@ -1,0 +1,172 @@
+import java.util.ArrayList;
+import java.util.Date;
+
+public class L1N4 {
+    public static void main(String[] args) {
+        Account acc = new Account("George",1122, 1000);
+        acc.setAnnualInterestRate(0.015);
+        
+        acc.deposit(30);
+        acc.deposit(40);
+        acc.deposit(50);
+        
+        acc.withdraw(5);
+        acc.withdraw(4);
+        acc.withdraw(2);
+
+        System.out.println("Name: " + acc.getName());
+        System.out.println("Monthly interest rate: "+ acc.getMonthlyInterestRate());
+        System.out.println("Balance: " + acc.getBalance());
+        acc.printAllTransactions();
+    }
+}
+
+class Account {
+    private int id = 0;
+    private double balance = 0;
+    private double annualInterestRate = 0;
+    private Date dateCreated;
+    private ArrayList<Transaction> listOfTransactions = new ArrayList<Transaction>();
+    private String name;
+
+    Account() {
+    }
+
+    Account(int id, double initialBalance) {
+        this.id = id;
+        this.balance = initialBalance;
+        dateCreated = new Date(); // Initialize dateCreated with current date
+    }
+
+    Account(String name, int id, double initialBalance) {
+        // You can add the name functionality if needed
+        this(id, initialBalance);
+        this.name = name;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getAnnualInterestRate() {
+        return this.annualInterestRate;
+    }
+
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public double getMonthlyInterestRate() {
+        return annualInterestRate / 12;
+    }
+
+    public double getMonthlyInterest() {
+        return balance * (annualInterestRate / 12);
+    }
+    
+    public void setName(String name) {
+       this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public String withdraw(double amount) {
+        if (amount > this.balance) {
+            return "";
+        }
+        this.balance = this.balance - amount;
+        Transaction newTransaction = new Transaction('W', amount, this.balance, "Withdrawal");
+        listOfTransactions.add(newTransaction);
+        return "Balance :" + this.balance;
+    }
+
+    public void deposit(double dep) {
+        balance += dep;
+        Transaction newTransaction = new Transaction('D', dep, this.balance, "Deposit");
+        listOfTransactions.add(newTransaction);
+    }
+    
+    public void printAllTransactions() {
+        System.out.println("List of transactions:");
+        for (Transaction transaction : listOfTransactions) {
+            System.out.println("Date: " + transaction.getDate());
+            System.out.println("Type: " + transaction.getType());
+            System.out.println("Amount: " + transaction.getAmount());
+            System.out.println("Balance: " + transaction.getBalance());
+            System.out.println("Description: " + transaction.getDescription());
+            System.out.println(); // Add a newline for better readability
+        }
+    }
+}
+
+class Transaction {
+    private java.util.Date date;
+    private char type;
+    public double amount;
+    private double balance;
+    private String description;
+
+    public Transaction(char type, double amount, double balance, String description) {
+        date = new java.util.Date();
+        this.type = type;
+        this.amount = amount;
+        this.balance = balance;
+        this.description = description;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public char getType() {
+        return this.type;
+    }
+
+    public void setType(char type) {
+        this.type = type;
+    }
+
+    public double getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+
+
