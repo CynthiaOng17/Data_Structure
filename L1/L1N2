@@ -1,0 +1,45 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author User
+ */
+public class L1N2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        int cnt = returnCountWithoutSpecialChar(read());
+        String text = returnTextWithoutSpecialChar(read());
+        System.out.println(cnt);
+        System.out.println(text);
+    }
+    public static String read() {
+        StringBuilder content = new StringBuilder();
+        int cnt = 0;
+        try {
+            Scanner sc = new Scanner(new FileInputStream("C:/Users/User/Downloads/text4.txt"));
+            while (sc.hasNextLine()) {
+                content.append(sc.nextLine());
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found");
+        }
+        return content.toString();
+    }
+    public static int returnCountWithoutSpecialChar(String text){
+        String textWithoutSpecialChar = text.replaceAll("[^a-zA-Z0-9]", "");
+        //String textWithoutSpecialChar = text.replaceAll("[^a-zA-Z]", "");
+        return textWithoutSpecialChar.length();
+    }
+    
+    public static String returnTextWithoutSpecialChar(String text){
+        return text.replaceAll("[^a-zA-Z0-9]", "");
+        //return text.replaceAll("[^a-zA-Z]", "");
+    }
+}
