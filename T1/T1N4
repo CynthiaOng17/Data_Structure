@@ -1,0 +1,31 @@
+public class T1N4 {
+}
+abstract class Vehicle{
+    double maxSpeed;
+    protected double currentSpeed;
+    
+    Vehicle(double maxSpeed){
+        this.maxSpeed = maxSpeed;
+    }
+    public abstract void accelerate();
+    
+    public double getCurrentSpeed(){
+        return this.currentSpeed;
+    }
+    
+    public double getMaxSpeed(){
+        return this.maxSpeed;
+    }
+    
+    public void pedalToTheMetal(){
+        while(currentSpeed < maxSpeed){
+        accelerate();
+        }
+    }
+}
+//can't create instance of abstract class
+//need to hv a class extends abstract class
+//abstract class can hv concrete method
+//need to hv definition for abstract method when you extends the abs class
+//good habits to hv both set and get method
+//inheritance, constructor, polymorphism, interface
