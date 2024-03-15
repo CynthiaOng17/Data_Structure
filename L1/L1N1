@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class L1N1 {
+    public static void main(String[] args) {
+        read();
+        System.out.println("------------------------");
+        append();
+        read();
+        
+    }
+
+    public static void read() {
+        try {
+            Scanner sc = new Scanner(new FileInputStream("C:/Users/User/Downloads/CynthiaOngKa_23004897.txt"));
+            while (sc.hasNextLine()) {
+                System.out.println(sc.nextLine());
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found");
+        }
+    }
+
+    public static void append() {
+        try {
+            FileWriter writer = new FileWriter("C:/Users/User/Downloads/CynthiaOngKa_23004897.txt", true);
+
+            // Appending text
+            writer.write("\nThursday 17 June 2024\n");
+            writer.write("Finally, it’s the end of the term and the DS class has finished! I think I did well in this course.");
+            writer.write("I was satisfied with my own performance.");
+            writer.write("I learned the ways to manipulate data.");
+            writer.write("I have aim for a higher grade for DS exam than I expected in the beginning.");
+            writer.write("I tried my best to complete all tasks in this course.");
+            writer.write("However, I could be more proactive in the class.");
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Problem with file output");
+        }
+    }
+}
+
