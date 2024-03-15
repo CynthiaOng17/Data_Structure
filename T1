@@ -1,0 +1,45 @@
+public class T1N1 {
+
+    public static void main(String[] args) {
+        Telephone [] phones = new Telephone [5];
+        
+        for(int i = 0; i < phones.length ; i++){
+            phones[i] = new Telephone ("03","79676300"+i);
+        }
+        
+        for(Telephone phone : phones){
+            System.out.println(phone.makeFullNumber());
+        }
+    }
+}
+class Telephone{
+    String areaCode; //use String cause 03; start with 0
+    String number;
+    private static int numberOfTelephoneObject = 0;
+    
+    Telephone(String a, String b){
+        this.areaCode = a;
+        this.number = b;
+        numberOfTelephoneObject++;
+    }
+    //constructor overloadding
+    
+    public String getAreaCode(){
+        return areaCode;
+    }
+    public void setAreaCode(String areaCode){
+        this.areaCode = areaCode;
+    }
+    public String getNumber(){
+        return number;
+    }
+    public void setNumber(String number){
+        this.number = number;
+    }
+    public String makeFullNumber(){
+        return areaCode+"-"+number;
+    }
+    public static int getNumberOfTelephoneObject(){
+        return numberOfTelephoneObject;
+    }
+}
