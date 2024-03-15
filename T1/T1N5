@@ -1,0 +1,32 @@
+public class T1N5 {
+    
+}
+interface Account{
+    public int deposit(int x);
+    public Boolean withdraw(int y);
+}
+
+class BankAccount implements Account{
+    double balance;
+    
+    BankAccount(int balance){
+        this.balance = balance;
+    }
+    
+    public int deposit(int dep){
+        return (int) (balance+dep);
+    }
+     public Boolean withdraw(int y){
+         if(y <= balance){
+             this.balance = balance - y;
+             return true;
+         }
+         return false;
+     }
+}
+//interface vs abstract method
+//can extends more than one abs method
+//implements 1 interface
+//abs can hv concrete & abs method
+//interface: subclass must implement ALL & NOTHING BUT ONLY method in superclass
+//interface can't hv extra method
