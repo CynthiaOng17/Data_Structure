@@ -1,0 +1,25 @@
+public class T2N2 {
+
+    public static void main(String[] args) {
+        // Create arrays of different types
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        String[] stringArray = {"Jane", "Tom", "Bob"};
+        Character[] charArray = {'a', 'b', 'c'};
+
+        // Display all arrays
+        listAll(intArray);
+        listAll(stringArray);
+        listAll(charArray);
+    }
+
+    // Generic method to display elements of an array
+    public static <T> void listAll(T[] array) {
+        System.out.print("Array elements: ");
+        for (T element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+}
+
+
