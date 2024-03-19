@@ -1,0 +1,10 @@
+import java.util.ArrayList;
+
+public class T2N7 {
+    public static void main (String[] args){
+        ArrayList<String> vehicle = new ArrayList<>();
+        ArrayList<Object> transportation = new ArrayList<>();
+    }
+    public static void allTransportation(ArrayList <?> arr1, ArrayList <?> arr2){
+    }  
+}
