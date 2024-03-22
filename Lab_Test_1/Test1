@@ -1,0 +1,19 @@
+public class Test1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        EmployeeTesla NewGuy = new EmployeeTesla();
+        NewGuy.introduce();
+        
+        EmployeeTesla  Alisa = new EmployeeTesla("Alisa");
+        Alisa.introduce();
+        
+        EmployeeTesla  Adam = new EmployeeTesla("Adam", 6541);
+        Adam.introduce();
+        
+        EmployeeTesla  Ali = new EmployeeTesla("Ali", 3941,12345);
+        Ali.introduce();
+    }     
+}
