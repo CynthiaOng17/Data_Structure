@@ -1,0 +1,13 @@
+public class EmployeeTesla<ID> extends Employee<ID>{
+    EmployeeTesla(){
+    }
+    EmployeeTesla(String name){
+        super(name);
+    }
+    EmployeeTesla(String name, int taxNo){
+        super(name,taxNo); 
+    }
+    EmployeeTesla(String name, int taxNo, int ID){
+        super(name, taxNo, ID);       
+    }
+}
