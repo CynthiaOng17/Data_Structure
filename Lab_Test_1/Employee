@@ -1,0 +1,39 @@
+public abstract class Employee <ID>{
+    String name ="John Doe" ;
+    int taxNo = 9999;
+    int id = 1111;
+    static int x = 0;
+    
+    Employee(){
+        x++;
+        System.out.println("Constructor "+x+" is running");
+    }
+    Employee(String name){
+        this.name = name;
+        x++;
+        System.out.println("Constructor "+x+" is running");
+    }
+    
+    Employee(String name, int taxNo){
+        this.name = name;
+        this.taxNo = taxNo;
+        x++;
+        System.out.println("Constructor "+x+" is running");
+    }
+    
+    Employee(String name, int taxNo,int ID){
+        this.id = ID;
+        this.name = name;
+        this.taxNo = taxNo; 
+        x++;
+        System.out.println("Constructor "+x+" is running");
+    }
+    public void introduce(){
+       
+        System.out.println("Employee Tesla starts wokring...");
+        System.out.print("My name is "+this.name+" ");
+        System.out.print(", my tax no is "+this.taxNo+" ");
+        System.out.print(", and my employee id is "+ this.id+" ");
+        System.out.println("\n-----I am an Employee object-----\n");
+    }
+}
