@@ -1,0 +1,73 @@
+import java.util.Scanner;
+public class CandyMachine {
+    private Dispenser candies;
+    private Dispenser chips;
+    private Dispenser gum;
+    private Dispenser cookies;
+    private CashRegister cashRegister;
+    
+    public CandyMachine() {
+        candies = new Dispenser(1.0, 50, "candies");
+        chips = new Dispenser(3.0, 20, "chips");
+        gum = new Dispenser(0.5, 30, "gum");
+        cookies = new Dispenser(3.0, 10, "cookies");
+        cashRegister = new CashRegister();
+    }
+    
+    public void showProducts() {
+        System.out.println("1. Candies (RM1 each)");
+        System.out.println("2. Chips (RM3 each)");
+        System.out.println("3. Gum (RM0.50 each)");
+        System.out.println("4. Cookies (RM3 each)");
+    }
+    
+    public void selectProduct(int choice, int quantity) {
+        Dispenser selectedDispenser = null;
+        switch (choice) {
+            case 1:
+                selectedDispenser = candies;
+                break;
+            case 2:
+                selectedDispenser = chips;
+                break;
+            case 3:
+                selectedDispenser = gum;
+                break;
+            case 4:
+                selectedDispenser = cookies;
+                break;
+            default:
+                System.out.println("Invalid selection");
+                return;
+        }
+        double price = selectedDispenser.getPrice() * quantity;
+        System.out.println("Price: RM" + price);
+        if (selectedDispenser.getQuantity() >= quantity) {
+            if (processPayment(price)) {
+                selectedDispenser.dispense(quantity);
+                System.out.println("Dispensed " + quantity + " " + selectedDispenser.getItem());
+            } else {
+                System.out.println("Insufficient funds");
+            }
+        } else {
+            System.out.println("Insufficient quantity");
+        }
+    }
+
+    private boolean processPayment(double amount) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter amount: RM");
+        double payment = scanner.nextDouble();
+        if (payment > amount) {
+            cashRegister.acceptPayment(amount);
+            double change = cashRegister.calculateChange(amount, payment);
+            System.out.println("Change: RM"+change);
+            return true;
+        }else if(payment == amount){
+            cashRegister.acceptPayment(amount);
+            return true;
+        }
+        return false;
+    }
+    
+}
