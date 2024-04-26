@@ -1,0 +1,9 @@
+public interface BidInterface {
+    public String name();
+    public String description();
+    public double capacity();
+    public double seasonalEfficiency();
+    public double unitCost();
+    public double installationCost();
+    public double yearlyCost();
+}
