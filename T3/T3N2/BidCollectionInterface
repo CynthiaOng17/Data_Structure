@@ -1,0 +1,9 @@
+public interface BidCollectionInterface {
+    
+    public void addCollection(int bid);
+    public int bestCost();
+    public int bestInitialCost();
+    public void clear();
+    public int getNumber();
+    public boolean checkCollection();
+}
