@@ -1,0 +1,23 @@
+public class CashRegister {
+    private double totalCash;
+
+    public CashRegister() {
+        totalCash = 0;
+    }
+
+    public void acceptPayment(double amountPaid) {
+        totalCash += amountPaid;
+    }
+
+    public double calculateChange(double amountDue, double amountPaid) {
+        return amountPaid - amountDue;
+    }
+
+    public double getTotalCash() {
+        return totalCash;
+    }
+
+    public void reset() {
+        totalCash = 0;
+    }
+}
