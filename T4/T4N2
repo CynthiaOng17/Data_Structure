@@ -1,0 +1,11 @@
+public boolean contains(E e) {
+    Node<E> current = head;
+    while (current != null) {
+        if (current.element.equals(e)) {
+            System.out.println(current.element);
+            return true;
+        }
+        current = current.next;
+    }
+    return false;
+}
