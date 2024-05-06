@@ -1,0 +1,57 @@
+public class SinglyLinkedList <E> {
+    private Node<E> head, tail;
+    int size = 0;
+    
+    public void add(E e){
+        Node<E> newNode = new Node<>();
+        if(size == 0){
+            head = tail = newNode;
+        }
+        tail.next = newNode;
+        tail = newNode;
+        size++;
+    }
+    
+    public void removeElement(E e){
+        if(head == null)
+            return;
+        Node<E> current = head;
+        while(current != null){
+            if(current.element.equals(e)){
+                current = current.next;
+                size--;
+                return;
+            }
+            current = current.next;
+        }
+    }
+    
+    public void printList(){
+        Node<E> current = head;
+        while(current != null){
+            System.out.print(current.element+" ");
+            current = current.next;
+        }
+    }
+    public int getSize(){
+        return size;
+    }
+    
+    public boolean contains(E e){
+        for(Node<E> current = head; current != null; current = current.next){
+            if(current.element.equals(e)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void replace(E e, E newE){
+        Node<E> current = head;
+        while(current != null){
+            if(current.element.equals(e)){
+                current.element = newE;
+            }
+            current = current.next;
+        }
+    }
+}
