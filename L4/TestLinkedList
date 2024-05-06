@@ -1,0 +1,30 @@
+public class TestLinkedList {
+    public static void main(String[] args){
+        MyLinkedList list = new MyLinkedList();
+        list.addFirst('a');
+        list.add(2,'b');
+        list.add(3,'c');
+        list.add(4,'d');
+        list.addLast('e');
+        list.print();
+        System.out.println("The reversed list is: ");
+        list.reverse();
+        System.out.println();
+        System.out.println("The size of the list is: "+list.size);
+        System.out.println("The first value in the list is: " + list.getFirst());
+        System.out.println("The last value in the list is: " + list.getLast());
+        System.out.println("The removed value in the list is: " + list.remove(2));
+        System.out.println("The content of the list:");
+        list.print();
+        
+        System.out.println("The index value of item 'b' is" + list.indexOf('b'));
+        System.out.println("The index value of item 'd' is" + list.indexOf('d'));
+        System.out.println("Does the list contains item 'c'? " + list.contains('c'));
+        System.out.print(list.set(0,'j'));
+        System.out.print(list.set(1,'a'));
+        System.out.print(list.set(2,'v'));
+        System.out.print(list.set(3,'a'));
+        System.out.println();
+        System.out.println(list.getMiddleValue());
+    }
+}
