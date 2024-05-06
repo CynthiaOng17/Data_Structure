@@ -1,0 +1,32 @@
+public class T5N2 <E> {
+    private Node<E> head, tail;
+    private int size;
+    
+    public E remove(int index){
+        if (index < 0 || index > size){
+            return null;
+        }
+        else{
+            // create node temp and set point to the head
+            Node<E> temp = head;
+            // traverse and stop at the node of requested index
+            for(int i=0; i<index; i++){
+                temp = temp.next;
+            }
+            //copy elemeny hold by temp node to the element
+            E element = temp.element;
+            // repoint of pointer 'prev' of (temp.next) to the node temp.prev
+            temp.next.prev = temp.prev;
+            // repoint of pointer 'next' of (temp.prev) to the node temp.next
+            temp.prev.next = temp.next;
+            //set pointerd of node temp (next and prev to be null)
+            temp.next = null;
+            temp.prev = null;
+            //reduce number of node by one
+            size --;
+            //return the element that has been removed
+            return element;
+        }
+    }
+
+}
