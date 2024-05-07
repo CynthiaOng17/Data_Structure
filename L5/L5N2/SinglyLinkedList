@@ -1,24 +1,32 @@
-public class SinglyLinkedList <E> {
+public class SinglyLinkedList<E> {
     private Node<E> head, tail;
     int size = 0;
-    
-    public void add(E e){
-        Node<E> newNode = new Node<>();
-        if(size == 0){
+
+    public void add(E e) {
+        Node<E> newNode = new Node<>(e);
+        if (size == 0) {
             head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
         }
-        tail.next = newNode;
-        tail = newNode;
         size++;
     }
     
-    public void removeElement(E e){
-        if(head == null)
+    public void removeElement(E e) {
+        if (head == null)
             return;
+        
+        if (head.element.equals(e)) {
+            head = head.next;
+            size--;
+            return;
+        }
+        
         Node<E> current = head;
-        while(current != null){
-            if(current.element.equals(e)){
-                current = current.next;
+        while (current.next != null) {
+            if (current.next.element.equals(e)) {
+                current.next = current.next.next;
                 size--;
                 return;
             }
@@ -26,32 +34,45 @@ public class SinglyLinkedList <E> {
         }
     }
     
-    public void printList(){
+    public void printList() {
         Node<E> current = head;
-        while(current != null){
-            System.out.print(current.element+" ");
+        while (current != null) {
+            System.out.print(current.element + " ");
             current = current.next;
         }
+        System.out.println(); // Add a new line after printing the list
     }
-    public int getSize(){
+    
+    public int getSize() {
         return size;
     }
     
-    public boolean contains(E e){
-        for(Node<E> current = head; current != null; current = current.next){
-            if(current.element.equals(e)){
+    public boolean contains(E e) {
+        for (Node<E> current = head; current != null; current = current.next) {
+            if (current.element.equals(e)) {
                 return true;
             }
         }
         return false;
     }
-    public void replace(E e, E newE){
+    
+    public void replace(E e, E newE) {
         Node<E> current = head;
-        while(current != null){
-            if(current.element.equals(e)){
+        while (current != null) {
+            if (current.element.equals(e)) {
                 current.element = newE;
             }
             current = current.next;
+        }
+    }
+    
+    private static class Node<E> {
+        E element;
+        Node<E> next;
+
+        Node(E element) {
+            this.element = element;
+            this.next = null;
         }
     }
 }
