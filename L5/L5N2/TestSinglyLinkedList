@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class TestSinglyLinkedList {
     private static SinglyLinkedList <String> studentList = new SinglyLinkedList<>();
     private static Scanner sc = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class TestSinglyLinkedList {
                     System.out.println("Existing...");
                     break;
                 default:
-                    System.out.println("Imvalid choice. Please enter a number from 1 to 6.");
+                    System.out.println("Invalid choice. Please enter a number from 1 to 6.");
             }
         }
         sc.close();
@@ -53,25 +54,26 @@ public class TestSinglyLinkedList {
         }
         return sc.nextInt();
     }
-    private static void addStudent(){
-        System.out.println("Enter the students' name: ");
-        String name = sc.nextLine();
-        name = sc.nextLine();
+    private static void addStudent() {
+        System.out.println("Enter the student's name:");
+        String name = sc.nextLine(); // Consume the newline character
+        name = sc.nextLine(); // Read the actual input
         studentList.add(name);
         System.out.println("Student added successfully.");
     }
-    
-    private static void removeStudent(){
+
+    private static void removeStudent() {
         System.out.println("Enter the student's name to remove: ");
-        String name = sc.nextLine();
-        name = sc.nextLine();
-        if(studentList.contains(name)){
+        String name = sc.nextLine(); // Consume the newline character
+        name = sc.nextLine(); // Read the actual input
+        if (studentList.contains(name)) {
             studentList.removeElement(name);
             System.out.println("Student removed successfully.");
-        }else{
+        } else {
             System.out.println("Student not found.");
         }
     }
+
     
     private static void calculateSize(){
         System.out.println("Number of students: "+ studentList.getSize());
@@ -98,3 +100,4 @@ public class TestSinglyLinkedList {
             studentList.printList();
         }
     }
+}
