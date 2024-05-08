@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class L7N2 {
+    
+    public static boolean isPalindrome(String str){
+        MyQueue <Character> queue = new MyQueue<>();
+        for(int i = 0; i < str.length(); i ++){
+            queue.enqueue(str.charAt(i));
+        }
+        
+        StringBuilder reversed = new StringBuilder();
+        for(int i = queue.getSize(); i > 0; i--){
+            reversed.append(queue.getItem(i));
+        }
+        String reversedStr = reversed.toString();
+        return str.equals(reversedStr);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter your string: ");
+        String inputString = sc.nextLine();
+        
+        boolean palindrome = isPalindrome(inputString);
+        if (palindrome) {
+            System.out.println(inputString + " is a palindrome.");
+        } else {
+            System.out.println(inputString + " is not a palindrome.");
+        }
+    }
+}
