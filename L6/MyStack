@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+public class MyStack <E>{
+    ArrayList<E> stack = new ArrayList<>();
+    
+    public MyStack(){
+        System.out.println("Creating a empty stack");
+    }
+    public MyStack(E obj){
+        stack.add(obj);
+    }
+    public void push (E o){
+        stack.add(o);
+    }
+    
+    public E pop(){
+        return (stack.remove(getSize()-1));
+    }
+    
+    public int getSize(){
+        return (stack.size());
+    }
+    
+     public E peek(){
+         return(stack.get(getSize()-1));
+     }
+     
+     public boolean isEmpty(){
+         return(getSize() == 0);
+     }
+     
+    public String toString(){
+        return stack.toString();
+    }
+    
+     public boolean search(E o){
+         for(int i = 0; i < stack.size(); i++){
+             if(stack.get(i).equals(o)){
+                 return true;
+             }
+         }return false;
+     }
+}
