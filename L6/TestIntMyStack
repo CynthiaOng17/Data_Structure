@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class TestIntMyStack {
+    public static void main(String[] args) {
+        System.out.println("Please enter an integer:");
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+
+        MyStack<Integer> stack = new MyStack<>();
+        
+        // Push values 1 through the user-entered value onto the stack
+        for (int i = 1; i <= number; i++) {
+            stack.push(i);
+        }
+        // push starting from 1, 2, 3...
+
+        System.out.println("Size of stack: " + stack.getSize());
+        
+        // Display the contents of the stack by repeatedly calling pop() until the stack is empty
+        System.out.println("Elements in the stack:");
+        while (!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
+    }
+}
