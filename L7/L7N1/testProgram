@@ -1,0 +1,19 @@
+public class testProgram {
+    public static void main (String[] args){
+        String [] initialItems = {"Durian", "Blueberry"};
+        MyQueue <String> fruitQ = new MyQueue<>(initialItems);
+        fruitQ.enqueue("Apple");
+        fruitQ.enqueue("Orange");
+        fruitQ.enqueue("Grapes");
+        fruitQ.enqueue("Cherry");
+        
+        System.out.println("Queue after adding new items: " + fruitQ.toString());
+        System.out.println("Top item: " + fruitQ.peek());
+        System.out.println("Queue size: " + fruitQ.getSize());
+        System.out.println("Remove durian: " + fruitQ.dequeue());
+        System.out.println("Item in index position of 2: " + fruitQ.getItem(2));
+        System.out.println("Queue consists of Cherry: " + fruitQ.contains("Cherry"));
+        System.out.println("Queue consists of Durian: " + fruitQ.contains("Durian"));
+        System.out.println("Queue is empty: " + fruitQ.isEmpty());
+    }
+}
