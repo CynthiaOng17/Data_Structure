@@ -1,0 +1,152 @@
+import java.util.NoSuchElementException;
+
+/**
+ *
+ * @author User
+ */
+public class DoubleLinkedList <E>{
+    private Node<E> head;
+    private Node<E> tail;
+    private int size;
+    
+    DoubleLinkedList(){
+        size = 0;
+        this.head = null;
+        this.tail = null;
+    }
+    public boolean isEmpty(){
+        return (size == 0);
+    }
+    public void addFirst(E e){
+        Node<E> tmp = new Node(e,head,null);
+        if(head != null){
+            head.prev = tmp;
+        }
+        head = tmp;
+        if(tail == null){
+            tail = tmp;
+        }
+        size++;
+        System.out.println("adding:"+ e);
+    }
+    
+    public void addLast(E e){
+        Node<E> tmp = new Node(e,null, tail);
+        if(tail != null){
+            tail.next = tmp;
+        }
+        tail = tmp;
+        if(head == null){
+            head = tmp;
+        }
+        size++;
+        System.out.println("adding:"+ e);
+    }
+    
+    public void add(int index, E e){
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException();
+        }
+        if(index == 0)
+            addFirst(e);
+        else if (index == size)
+            addLast(e);
+        else{
+            Node<E> current = head;
+            for(int i = 0 ; i < index; i++){
+                current = current.next;
+            }
+            Node<E> newNode = new Node(e, current, current.prev);
+            current.prev.next = newNode;
+            current.prev = newNode;
+            size++;
+        }
+    }
+    public E removeFirst(){
+        if(size == 0)
+            throw new NoSuchElementException();
+        
+        Node<E> temp = head;
+        head = head.next;
+        head.prev = null;
+        temp.next = null;
+        size--;
+        System.out.println("deleted: "+temp.element);
+        return temp.element;
+    }
+    
+    public E removeLast(){
+        if(size == 0)
+            throw new NoSuchElementException();
+        
+        Node<E> temp = tail;
+        tail = tail.prev;
+        tail.next = null;
+        temp.prev = null;
+        size--;
+        System.out.println("deleted: "+temp.element);
+        return temp.element;
+    }
+    
+    public E remove(int index){
+        E element;
+        if(index < 0 || index >= size)
+           return null;
+        if(index == 0){
+            element = removeFirst();
+        }else if(index == size-1){
+            element = removeLast();
+        }else{
+            Node<E> current = head;
+            for(int i = 0; i < index; i++){
+                current = current.next;
+            }
+            element = current.element;
+            (current.prev).next = current.next;
+            (current.next).prev = current.prev;
+            current.next = current.prev = null;
+            size--;
+        }
+        System.out.println("deleted"+element);
+        return element;
+    }
+    
+    public void IterateForward(){
+        System.out.println("iterating forward...");
+        Node<E> temp = head;
+        while(temp != null){
+            System.out.print(temp.element);
+            System.out.print(" ");
+            temp = temp.next;
+        }
+    }
+    
+    public void IterateBackward(){
+        System.out.println("iterating backward...");
+        Node<E> temp = tail;
+        while(temp != null){
+            System.out.print(temp.element+" ");
+            temp = temp.prev;
+        }
+    }
+    public void getSize(){
+        System.out.println("size of current Doubly Linked List:"+size);
+    }
+    
+    public void clear(){
+        System.out.println("successfully clear " + size + " node");
+        Node<E> tmp = head;
+        while(head != null){
+            tmp = head.next;
+            head.prev = null;
+            head.next = null;
+            head = tmp;
+            if(tmp != null) {
+                tmp.prev = null;
+            }
+        }
+        tail = null; // Set tail to null
+        size = 0;
+    }
+
+}
