@@ -1,0 +1,13 @@
+public class Node <E> {
+    E element;
+    Node<E> prev, next;
+
+    Node(E e){
+        this(e, null, null);
+    }
+    Node(E e, Node<E> next, Node<E> prev){
+        this.element = e;
+        this.prev = prev;
+        this.next = next;
+    }
+}
