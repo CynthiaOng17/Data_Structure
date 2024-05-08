@@ -1,0 +1,45 @@
+import java.util.Stack;
+
+public class TowerOfHanoi {
+    public static void towerOfHanoi(int n, Stack<Integer> source, Stack<Integer> auxiliary, Stack<Integer> destination) {
+        if (n == 1) {
+            // If there's only one disk, move it from source to destination
+            destination.push(source.pop());
+            System.out.println("Move disk 1 from " + source + " to " + destination);
+        } else {
+            // Move n-1 disks from source to auxiliary using destination as auxiliary
+            towerOfHanoi(n - 1, source, destination, auxiliary);
+            // Move the nth disk from source to destination
+            destination.push(source.pop());
+            System.out.println("Move disk " + n + " from " + source + " to " + destination);
+            // Move n-1 disks from auxiliary to destination using source as auxiliary
+            towerOfHanoi(n - 1, auxiliary, source, destination);
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 3; // Number of disks
+        Stack<Integer> source = new Stack<>();
+        Stack<Integer> auxiliary = new Stack<>();
+        Stack<Integer> destination = new Stack<>();
+
+        // Initialize source stack with disks in ascending order
+        for (int i = n; i >= 1; i--) {
+            source.push(i);
+        }
+
+        System.out.println("Initial configuration:");
+        System.out.println("Source: " + source);
+        System.out.println("Auxiliary: " + auxiliary);
+        System.out.println("Destination: " + destination);
+
+        // Solve Tower of Hanoi problem
+        towerOfHanoi(n, source, auxiliary, destination);
+
+        System.out.println("Final configuration:");
+        System.out.println("Source: " + source);
+        System.out.println("Auxiliary: " + auxiliary);
+        System.out.println("Destination: " + destination);
+    }
+}
+
