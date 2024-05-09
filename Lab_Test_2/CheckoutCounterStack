@@ -1,0 +1,55 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.labtest2;
+
+/**
+ *
+ * @author User
+ */
+import java.util.ArrayList;
+
+public class CheckoutCounterStack <E> {
+    
+    ArrayList <E> stack = new ArrayList<>();
+    final int maxCounter = 10;
+    
+    public void openCheckoutCounter(E counterNumber){
+        if(stack.size()-1 > maxCounter){
+            System.out.println("Operating counter reach maximum");
+        }else{
+        stack.add(counterNumber);
+        System.out.println("Opening counter " + counterNumber);
+        }
+    }
+    
+    public E closeCheckoutCounter(){
+        if(stack.isEmpty()){
+            System.out.println("No counter operating");
+            return null;
+        }
+        else{
+            System.out.println("Closing counter "+stack.get(stack.size()-1) );
+            return stack.remove(stack.size()-1);
+        }
+    }
+    public E viewTopCheckoutCounter(){
+        if(stack.isEmpty()){
+            System.out.println("No counter operating");
+            return null;
+        }else{
+            return stack.get(stack.size()-1);
+        }
+    }
+    public boolean isStackEmpty(){
+        return stack.isEmpty();
+    }
+    public boolean isStackFull(){
+        return stack.size() == maxCounter;
+    }
+    
+    public String toString(){
+        return stack.toString();
+    }
+}
