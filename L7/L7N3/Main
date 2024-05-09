@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+/**
+ *
+ * @author User
+ */
+public class L7N3 {
+
+    public static void main(String[] args) {
+        MyQueue<Integer> share = new MyQueue<>();
+        MyQueue<Integer> price = new MyQueue<>();
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter your query (In format'Buy/Sell x shares at $y each'):");
+        String inputString = sc.nextLine();
+        int gain = 0;
+        
+        //loop continues as long as the inputString is not an empty string.
+        while(!inputString.equals("")){
+            String [] split = inputString.split(" ");
+            int x = Integer.parseInt(split[1]);
+            int y = Integer.parseInt(split[4].substring(1));
+            
+            if(inputString.charAt(0)=='B' || inputString.charAt(0) =='b'){
+                System.out.println("Buying now ...");
+                share.enqueue(x);
+                price.enqueue(y);
+            }else{
+                System.out.println("Selling the shares now ...");
+                
+                //while selling > 0 & share queue isn't empty 
+                while(x > 0 && !share.isEmpty()){
+                    int shareDequeue = share.peek();
+                    int priceDequeue = price.peek();
+                    
+                    if(shareDequeue == x){
+                        priceDequeue = price.dequeue();
+                        shareDequeue = share.dequeue();
+                        gain += (x * (y - priceDequeue));
+                        x = 0;
+                    }else if (shareDequeue > x){
+                        gain += (x * (y - priceDequeue));
+                        share.set(share.peek() - x);
+                        x = 0;
+                    }else{
+                        priceDequeue = price.dequeue();
+                        shareDequeue = share.dequeue();
+                        gain += (shareDequeue * (y - priceDequeue));
+                        x -= shareDequeue;
+                    }
+                }System.out.println("Total capital (gain/loss): "+gain);
+            }
+            if(share.isEmpty()){
+                System.out.println("No shares to sell!");
+            }
+            System.out.println("Queue for share: "+ share);
+            System.out.println("Queue for price: "+ price);
+                
+    }
+    }
+    
+}
