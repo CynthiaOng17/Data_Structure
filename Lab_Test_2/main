@@ -1,0 +1,47 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.labtest2;
+
+/**
+ *
+ * @author User
+ */
+public class Main {
+    public static void main(String[] args){
+        CheckoutCounterStack<Integer> cstack = new CheckoutCounterStack<>();
+        
+        cstack.openCheckoutCounter(1);
+        cstack.openCheckoutCounter(2);
+        cstack.openCheckoutCounter(3);
+        
+        cstack.closeCheckoutCounter();
+        
+        System.out.println("Operating checkout counter: "+ cstack);
+        
+        cstack.closeCheckoutCounter();
+        cstack.closeCheckoutCounter();
+        cstack.closeCheckoutCounter();
+        
+        System.out.println("Operating checkout counter: "+ cstack);
+        
+        System.out.println();
+        
+        CustomerCheckoutQueue<String> cqueue = new CustomerCheckoutQueue<>();
+        
+        cqueue.joinCheckoutLine("A");
+        cqueue.joinCheckoutLine("B");
+        cqueue.joinCheckoutLine("C");
+        
+        cqueue.processCheckout();
+        
+        System.out.println("Customer in queue "+ cqueue);
+        
+        cqueue.processCheckout();
+        cqueue.processCheckout();
+        cqueue.processCheckout();
+        
+        System.out.println("Customer in queue "+ cqueue);
+    }
+}
