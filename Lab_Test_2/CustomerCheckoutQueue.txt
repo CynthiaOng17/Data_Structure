@@ -1,0 +1,57 @@
+//CustomerCheckoutQueue
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.labtest2;
+
+import java.util.LinkedList;
+
+/**
+ *
+ * @author User
+ */
+public class CustomerCheckoutQueue <E> {
+    
+    LinkedList <E> queue = new LinkedList<>();
+    final int maxCustomer = 20;
+    
+    public void joinCheckoutLine(E customerName){
+        if(queue.size()-1 > maxCustomer){
+            System.out.println("Operating counter reach maximum");
+        }else{
+        queue.addLast(customerName);
+        System.out.println("Joining queue" + customerName);
+        }
+    }
+    
+    public E processCheckout(){
+        if(queue.size() ==0){
+            System.out.println("No customer in queue");
+            return null;
+        }else{
+        System.out.println("Completing checkout " + queue.getFirst());
+        return queue.removeFirst();
+        }
+    }
+    
+    public E viewNextCustomer(){
+        if(queue.size() ==0){
+            System.out.println("No customer in queue ");
+            return null;
+        }else{
+        return queue.getFirst();
+        }
+    }
+    
+    public boolean isQueueEmpty(){
+        return queue.isEmpty();
+    }
+    
+    public boolean isQueueFull(){
+        return queue.size() == maxCustomer;
+    }
+    public String toString(){
+        return queue.toString();
+    }
+}
