@@ -1,0 +1,99 @@
+public class PriorityQueue<E> {
+    LinkedList <E> queue = new LinkedList<>();
+    
+    public String toString(){
+        return queue.toString();
+    }
+    
+    public E poll(){
+        return queue.removeFirst();
+    }
+    
+    public void add(E e){
+        queue.add(e);
+    }
+    
+    public E toArray(){
+        return (E) queue.toArray();
+    }
+    
+    public E peek(){
+        return queue.peekFirst();
+    }
+    
+    public boolean contains(E e){
+        return queue.contains(e);
+    }
+    
+    public int size(){
+        return queue.size();
+    }
+    
+    public boolean isEmpty(){
+        return queue.isEmpty();
+    }
+    
+    public void reverse(){
+        for(int i = queue.size()-1; i > 0; i--){
+            System.out.println(queue.get(i)+" ");
+        }
+    }
+}
+
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class L7 {
+
+    public static void main(String[] args) {
+        int[] arr = {4, 8, 1, 2, 9, 6, 3, 7};
+        
+        // Create a priority queue
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        
+        // Add elements to the priority queue
+        for (int value : arr) {
+            queue.add(value);
+        }
+        
+        // Display all elements in the priority queue
+        System.out.println("Priority Queue: " + queue);
+        
+        // Retrieve and remove the first element in the priority queue
+        System.out.println("Poll: " + queue.poll());
+        
+        // Add a new element to the priority queue
+        queue.add(5);
+        System.out.println("After adding 5: " + queue);
+        
+        // Convert the priority queue into an array and display it
+        Integer[] array = queue.toArray(new Integer[0]);
+        System.out.println("Array: " + Arrays.toString(array));
+        
+        // Retrieve the first element in the priority queue without removing it
+        System.out.println("Peek: " + queue.peek());
+        
+        // Check if the priority queue contains element "1"
+        System.out.println("Contains 1: " + queue.contains(1));
+        
+        // Get the current size of the priority queue
+        System.out.println("Size: " + queue.size());
+        
+        // Display and remove elements from the queue until it is empty
+        System.out.print("Emptying queue: ");
+        while (!queue.isEmpty()) {
+            System.out.print(queue.poll() + " ");
+        }
+        System.out.println();
+        
+        // Re-insert elements to demonstrate reverse order sorting
+        for (int value : arr) {
+            queue.add(value);
+        }
+        
+        // Sort the priority queue in reverse order
+        PriorityQueue<Integer> reverseQueue = new PriorityQueue<>((a, b) -> b - a);
+        reverseQueue.addAll(queue);
+        System.out.println("Reverse Priority Queue: " + reverseQueue);
+    }
+}
