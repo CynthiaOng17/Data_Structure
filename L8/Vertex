@@ -1,0 +1,22 @@
+public class Vertex <T extends Comparable<T>, N extends Comparable<N> >{
+    Vertex <T,N> nextVertex;
+    Edge <T,N> firstEdge;
+    T vertexInfo;
+    int inDeg;
+    int outDeg;
+    
+    public Vertex(){
+        this.nextVertex = null;
+        this.firstEdge  = null;
+        this.vertexInfo  = null;
+        this.inDeg = 0;
+        this.outDeg = 0;
+    }
+    public Vertex(T vInfo, Vertex<T, N> next){
+        this.vertexInfo = vInfo;
+        this.nextVertex = next;
+        this.firstEdge  = null;
+        this.inDeg = 0;
+        this.outDeg = 0;
+    }
+}
