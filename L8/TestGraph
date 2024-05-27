@@ -1,0 +1,67 @@
+public class TestGraph {
+    public static void main (String [] args){
+        Graph <String, Integer> graph = new Graph <>();
+        String [] cities = {"Alor Setar", "Penang", "Kuching","Kota Bharu", "Kuantan"};
+        for(String c : cities)
+            graph.addVertex(c);
+        
+        System.out.println("The number of vertices in graph: "+ graph.getSize());
+        
+        System.out.println("Cities and vertices");
+        for(int i = 0; i < graph.getSize(); i++)
+            System.out.println(i+": "+ graph.getVertex(i)+"\t");
+        System.out.println();
+        
+        System.out.println("Is Kuantan in the graph? "+graph.hasVertex("Kuantan"));
+        System.out.println("Is Melaka in the graph? "+graph.hasVertex("Melaka"));
+        System.out.println();
+        
+        System.out.println("Kuching at index: "+graph.getIndex("Kuching"));
+        System.out.println("Kota Bharu at index: "+graph.getIndex("Kota Bharu"));
+        System.out.println();
+        
+        System.out.println("add edge Alor Setar - Penang: "+ graph.addEdge("Alor Setar", "Penang", 1));
+        System.out.println("add edge Alor Setar - Kuching: "+ graph.addEdge("Alor Setar", "Kuching", 2));
+        System.out.println("add edge Penang - Alor Setar: "+ graph.addEdge("Penang", "Alor Setar", 3));
+        System.out.println("add edge Kota Bharu - Penang: "+ graph.addEdge("Kohta Bharu", "Penang", 4));
+        System.out.println();
+        
+        System.out.println("has edge from Penang to Alor Setar? "+ graph.hasEdge("Penang", "Alor Setar"));
+        System.out.println("has edge from Kota Bharu to Kuching? "+ graph.hasEdge("Kota Bharu", "Kuching"));
+        System.out.println("has edge from Alor Setar to Kuching? "+ graph.hasEdge("Alor Setar", "Kuching"));
+        System.out.println();
+        
+        System.out.println("weight of the edge from Alor Setar to Penang "+graph.getEdgeWeight("Alor Setar", "Penang"));
+        System.out.println("weight of the edge from Alor Setar to Kuching "+graph.getEdgeWeight("Alor Setar", "Kuching"));
+        System.out.println();
+        
+        System.out.println("In degree of Penang is "+graph.getInDeg("Penang"));
+        System.out.println("Out degree of Penang is "+graph.getOutDeg("Penang"));
+        System.out.println();
+        
+        System.out.println("Neighbours of Kuching "+graph.getNeighbours("Kuching"));
+        System.out.println("Print edges");
+        graph.printEdge();
+        System.out.println();
+        
+        System.out.println("add undirected edge between Alor Setar and Kota Bharu "+graph.addUndirectedEdge("Alor Setar","Kota Bharu", 5));
+        System.out.println("has edge from  Alor Setar to Kota Bharu? "+ graph.hasEdge("Alor Setar","Kota Bharu"));
+        System.out.println("has edge from  Kota Bharu to Alor Setar? "+ graph.hasEdge("Kota Bharu","Alor Setar"));
+        
+        System.out.println("----- ------ ----- ----- -----");
+        System.out.println("Unweighted Graph");
+        GraphUnweighted <String> graphU = new GraphUnweighted <>();
+        for(String c : cities)
+            graphU.addVertex(c);
+        
+        System.out.println("add edge Alor Setar - Penang: "+ graphU.addEdge("Alor Setar", "Penang"));
+        System.out.println("add edge Alor Setar - Kuching: "+ graphU.addEdge("Alor Setar", "Kuching"));
+        System.out.println("add edge Penang - Alor Setar: "+ graphU.addEdge("Penang", "Alor Setar"));
+        System.out.println("add edge Kota Bharu - Penang: "+ graphU.addEdge("Kohta Bharu", "Penang"));
+        System.out.println();
+        
+        System.out.println("add undirected edge between Alor Setar and Kota Bharu "+graphU.addUndirectedEdge("Alor Setar","Kota Bharu"));
+        System.out.println("has edge from  Alor Setar to Kota Bharu? "+ graph.hasEdge("Alor Setar","Kota Bharu"));
+        System.out.println("has edge from  Kota Bharu to Alor Setar? "+ graph.hasEdge("Kota Bharu","Alor Setar"));
+    }
+}
