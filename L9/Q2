@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Q2 {
+    public static void main (String[]args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the degree of your binomial expression: ");
+        String strInput = sc.nextLine();
+        int n = Integer.parseInt(strInput);
+        // print binomial expansion
+        System.out.print("(x+y)^" + n + " = ");
+        for(int k = 0; k <= n; k++){
+            System.out.print(binomial(n, k) + "x^"+ (n - k)+ "y^" + k);
+            if(k != n)
+                System.out.print(" + ");    
+        }
+        System.out.println();
+    }
+    
+    public static int binomial (int n, int k){
+        if(k == n || k == 0)
+            return 1;
+        else
+            return binomial (n - 1, k - 1)+ binomial (n - 1, k);
+    }
+}
