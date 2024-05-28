@@ -1,0 +1,73 @@
+public class L10 {
+
+    public static void main(String[] args) {
+        int [] list = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        
+        selectionSortSmallest(list);
+        System.out.println("List 1: ");
+        for(int value : list)
+            System.out.print(value+" ");
+        System.out.println();
+        
+        selectionSortLargest(list);
+        System.out.println("List 2: ");
+        for(int value : list)
+            System.out.print(value+" ");
+        System.out.println();
+        
+        int [] list1 = {10,34,2,56,7,67,88,42};
+        insertionSort(list1);
+        System.out.println("List 3: ");
+        for(int value : list1)
+            System.out.print(value+" ");
+        System.out.println();
+        
+    }
+    public static void selectionSortSmallest(int[] arr){
+        
+        for(int i = 0; i < arr.length ; i++){
+            int currentMin = arr[i];
+            int currentMinIndex = i;
+            
+            for(int j = i +1; j < arr.length; j++){
+                if( arr[j] < currentMin){
+                    currentMin = arr[j];
+                    currentMinIndex = j;
+                }
+            }
+            if (currentMinIndex != i){
+               arr[currentMinIndex] = arr[i];
+               arr[i] = currentMin;
+            }
+        }
+    }
+    
+    public static void selectionSortLargest(int[] arr){
+        for(int i = 0; i < arr.length ; i++){
+            int currentMax = arr[i];
+            int currentMaxIndex = i;
+            
+            for(int j = i +1; j < arr.length; j++){
+                if( arr[j] > currentMax){
+                    currentMax = arr[j];
+                    currentMaxIndex = j;
+                }
+            }
+            if (currentMaxIndex != i){
+               arr[currentMaxIndex] = arr[i];
+               arr[i] = currentMax;
+            }
+        }
+    }
+    
+    public static void insertionSort(int[] arr){
+        for(int i = 1; i < arr.length; i ++){
+            int currentElement = arr[i];
+            int k;
+            for(k = i-1; k >= 0 && arr[k] > currentElement; k-- ){
+                arr[k+1] = arr[k];
+            }
+            arr[k+1] = currentElement;
+        }
+    }
+}
