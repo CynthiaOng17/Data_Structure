@@ -1,0 +1,14 @@
+public class L9N3 {
+    public static long exponent(int x, int y) {
+        // Base Case: If y is 0, return 1
+        if (y == 0) {
+            return 1;
+        }
+        // Recursive Case: If y > 0, calculate x^(y-1) and multiply by x
+        return x * exponent(x, y - 1);
+    }
+    
+    public static void main (String [] args){
+        System.out.println(exponent(10,3));
+    }
+}
