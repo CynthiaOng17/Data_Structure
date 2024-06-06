@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class TestBST {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input data: ");
+        String input = sc.nextLine();
+        String[] inputArray = input.split(",");
+        Integer[] arr = new Integer[inputArray.length];
+
+        for (int i = 0; i < inputArray.length; i++) {
+            arr[i] = Integer.parseInt(inputArray[i].trim());
+        }
+
+        BST<Integer> tree = new BST<>();
+        for (int value : arr) {
+            tree.insert(value);
+        }
+
+        System.out.print("Inorder (sorted): ");
+        tree.inorder(tree.root);
+        System.out.println();
+
+        System.out.print("Postorder (sorted): ");
+        tree.postorder(tree.root);
+        System.out.println();
+
+        System.out.print("Preorder (sorted): ");
+        tree.preorder(tree.root);
+        System.out.println();
+
+        System.out.println("Height of BST: " + tree.height());
+        System.out.println("Root of BST: " + tree.getRoot());
+        System.out.println("Check whether 10 is in tree: " + tree.search(10));
+        System.out.println("Delete 53: " + tree.delete(53));
+
+        System.out.print("Updated Inorder data (sorted): ");
+        tree.inorder(tree.root);
+        System.out.println();
+
+        System.out.println("Min value: " + tree.minValue());
+        System.out.println("Max value: " + tree.maxValue());
+
+        ArrayList<TreeNode<Integer>> path = tree.path(6);
+        System.out.print("A path from root to 6 is: ");
+        for (TreeNode<Integer> node : path) {
+            System.out.print(node.element + " ");
+        }
+        System.out.println();
+    }
+}
