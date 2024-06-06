@@ -1,0 +1,9 @@
+public class TreeNode <E extends Comparable<E>> {
+    TreeNode<E> left;
+    TreeNode<E> right;
+    E element;
+    
+    public TreeNode(E e){
+        this.element = e;
+    }
+}
